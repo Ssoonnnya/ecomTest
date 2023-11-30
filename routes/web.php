@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
+use  App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +30,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('products', [\App\Http\Controllers\ProductController::class, 'index']);
+Route::get('products', [ProductController::class, 'index']);
+Route::inertia('about', 'About');
 
 require __DIR__.'/auth.php';
